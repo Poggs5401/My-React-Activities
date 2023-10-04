@@ -25,8 +25,12 @@ class Clicky extends React.Component {
     return (
       <div>
         <h1>Button has been clicked {this.state.clicked} times.</h1>
-        <button type="button" onClick={this.handleClick}>Click me</button>
+        <button type="button" onClick={this.increaseClick}>Click me to Increase!</button>
+        <br />
+        <h1>Button has been clicked {this.state.clicked} times.</h1>
+        <button type="button" onClick={this.decreaseClick}>Click me to Decrease!</button>
       </div>
+      
     );
   }
 }

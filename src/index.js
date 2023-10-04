@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Clicky from './exampleFunctions/Clicky';
+import LoginForm from './exampleFunctions/LoginForm.js';
+// import CountDown from './exampleFunctions/CountDown.js';
+// import Clicky from './exampleFunctions/Clicky.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -10,7 +12,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-  <Clicky />
+  <LoginForm />
   </>
 );
 
