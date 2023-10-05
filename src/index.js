@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import LoginForm from './exampleFunctions/LoginForm.js';
+import ActivityForm from './exampleFunctions/ActivityForm';
+// import MultipleForm from './exampleFunctions/MultipleForm';
+// import LoginForm from './exampleFunctions/LoginForm.js';
 // import CountDown from './exampleFunctions/CountDown.js';
 // import Clicky from './exampleFunctions/Clicky.js';
 
@@ -12,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <>
-  <LoginForm />
+  <ActivityForm />
   </>
 );
 
