@@ -1,5 +1,6 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
+import Button from "react-bootstrap/Button";
 
 const TodoItem = (props) => {
   return (
@@ -15,6 +16,7 @@ const TodoItem = (props) => {
           <Badge pill bg="success" className="float-end" onClick={() => {props.markAsDone(props.todo.id)}}>
             &#10003;
           </Badge>
+          <Button onClick={() => {props.deleteToDo(props.todo.id)}} className="float-end" variant="danger" size="sm">Delete</Button>
         </>
       )}
     </ListGroup.Item>
