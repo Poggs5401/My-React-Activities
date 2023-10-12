@@ -12,7 +12,7 @@ const TodoList = () => {
     { id: 3, text: "Create a to-do app using React", done: false },
   ];
 
-  let localList = JSON.parse(localStorage.getItem('todos'));
+  let localList = JSON.parse(localStorage.getItem("todos"));
 
   if (localList) {
     initialList = localList;
@@ -23,7 +23,7 @@ const TodoList = () => {
   const [list, setList] = useState(initialList);
 
   useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(list));
+    localStorage.setItem("todos", JSON.stringify(list));
   }, [list]);
 
   const markAsDone = (id) => {
@@ -38,16 +38,29 @@ const TodoList = () => {
     setList(newList);
   };
 
-     const deleteToDo = (id) => {
-      const newList = list.filter((item) => {
-        return item.id !== id;
-      });
+  const deleteToDo = (id) => {
+    const newList = list.filter((item) => {
+      return item.id !== id;
+    });
 
-      setList(newList);
-    };
+    setList(newList);
+  };
+
+  const handleKeyUp = (e) => {
+    if (e.key === "Enter") {
+      addTodoItem();
+    }
+  };
 
   let todoItems = list.map((item, index) => {
-    return <TodoItem key={index} markAsDone={markAsDone} todo={item} deleteToDo={deleteToDo} />;
+    return (
+      <TodoItem
+        key={index}
+        markAsDone={markAsDone}
+        todo={item}
+        deleteToDo={deleteToDo}
+      />
+    );
   });
 
   const [textInput, setTextInput] = useState("");
@@ -57,13 +70,18 @@ const TodoList = () => {
   };
 
   const addTodoItem = () => {
+    let lastItem = list[list.length - 1];
+    let id = 1;
+
+    if (lastItem) {
+      id = lastItem.id + 1;
+    }
+
     let newTodo = {
-      id: list[list.length - 1].id + 1,
+      id: id,
       text: textInput,
       done: false,
     };
-
- 
 
     setList((prevList) => [...prevList, newTodo]);
     setTextInput("");
@@ -71,10 +89,15 @@ const TodoList = () => {
 
   return (
     <Card>
-      <Card.Header>To-Do List {localStorage.getItem('name')}</Card.Header>
+      <Card.Header>To-Do List {localStorage.getItem("name")}</Card.Header>
       <ListGroup variant="flush">{todoItems}</ListGroup>
       <Card.Footer>
-        <input type="text" onChange={handleTextInput} value={textInput} />
+        <input
+          type="text"
+          onChange={handleTextInput}
+          value={textInput}
+          onKeyUp={handleKeyUp}
+        />
         <Button variant="primary" className="float-end" onClick={addTodoItem}>
           Add
         </Button>

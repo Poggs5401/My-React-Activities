@@ -5,6 +5,16 @@ import Button from "react-bootstrap/Button";
 const TodoItem = (props) => {
   return (
     <ListGroup.Item>
+      <Button
+        onClick={() => {
+          props.deleteToDo(props.todo.id);
+        }}
+        className="float-end"
+        variant="danger"
+        size="sm"
+      >
+        Delete
+      </Button>
       {props.todo.done ? (
         <>
           <span className="done">{props.todo.text}</span>
@@ -13,10 +23,16 @@ const TodoItem = (props) => {
       ) : (
         <>
           {props.todo.text}
-          <Badge pill bg="success" className="float-end" onClick={() => {props.markAsDone(props.todo.id)}}>
+          <Badge
+            pill
+            bg="success"
+            className="float-end"
+            onClick={() => {
+              props.markAsDone(props.todo.id);
+            }}
+          >
             &#10003;
           </Badge>
-          <Button onClick={() => {props.deleteToDo(props.todo.id)}} className="float-end" variant="danger" size="sm">Delete</Button>
         </>
       )}
     </ListGroup.Item>
